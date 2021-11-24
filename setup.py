@@ -12,11 +12,6 @@ for line in open("./fudge/__init__.py"):
         break
 assert version
 
-extra_setup = {}
-if sys.version_info >= (3,):
-    extra_setup['use_2to3'] = True
-    # extra_setup['use_2to3_fixers'] = ['your.fixers']
-
 setup(
     name='fudge',
     version=version,
@@ -58,14 +53,7 @@ email without actually sending email::
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 2.5',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.1',
-        'Programming Language :: Python :: 3.2',
         'Topic :: Software Development :: Testing'
         ],
-    **extra_setup
     )
