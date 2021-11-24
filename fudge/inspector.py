@@ -505,7 +505,7 @@ class Stringlike(ValueTest):
         return self._make_argspec(fmt_val(self.part))
 
     def stringlike(self, value):
-        if isinstance(value, (str, unicode)):
+        if isinstance(value, str):
             return value
         else:
             return str(value)

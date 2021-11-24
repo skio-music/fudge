@@ -133,8 +133,8 @@ class TestObjectlike(unittest.TestCase):
         eq_(repr(o), "arg.has_attr(one=1, two='two')")
 
     def test_objectlike_unicode(self):
-        o = inspector.HasAttr(one=1, ivan=u"Ivan_Krsti\u0107")
-        eq_(repr(o), "arg.has_attr(ivan=%s, one=1)" % repr(u'Ivan_Krsti\u0107'))
+        o = inspector.HasAttr(one=1, ivan="Ivan_Krsti\u0107")
+        eq_(repr(o), "arg.has_attr(ivan=%s, one=1)" % repr('Ivan_Krsti\u0107'))
 
     def test_objectlike_repr_long_val(self):
         o = inspector.HasAttr(
@@ -161,20 +161,20 @@ class TestStringlike(unittest.TestCase):
         db.execute(u"Ivan_Krsti\u0107(); foo();")
 
     def test_startswith_unicode(self):
-        p = inspector.Startswith(u"Ivan_Krsti\u0107")
-        eq_(repr(p), "arg.startswith(%s)" % repr(u'Ivan_Krsti\u0107'))
+        p = inspector.Startswith("Ivan_Krsti\u0107")
+        eq_(repr(p), "arg.startswith(%s)" % repr('Ivan_Krsti\u0107'))
 
     def test_endswith_ok(self):
         db = Fake("db").expects("execute").with_args(arg.endswith("values (1,2,3,4)"))
         db.execute("insert into foo values (1,2,3,4)")
 
     def test_endswith_ok_uni(self):
-        db = Fake("db").expects("execute").with_args(arg.endswith(u"Ivan Krsti\u0107"))
-        db.execute(u"select Ivan Krsti\u0107")
+        db = Fake("db").expects("execute").with_args(arg.endswith("Ivan Krsti\u0107"))
+        db.execute("select Ivan Krsti\u0107")
 
     def test_endswith_unicode(self):
-        p = inspector.Endswith(u"Ivan_Krsti\u0107")
-        eq_(repr(p), "arg.endswith(%s)" % repr(u'Ivan_Krsti\u0107'))
+        p = inspector.Endswith("Ivan_Krsti\u0107")
+        eq_(repr(p), "arg.endswith(%s)" % repr('Ivan_Krsti\u0107'))
 
     def test_startswith_repr(self):
         p = inspector.Startswith("_start")
@@ -247,8 +247,8 @@ class TestContains(unittest.TestCase):
         eq_(repr(c), "arg.contains(':part:')")
 
     def test_unicode(self):
-        c = inspector.Contains(u"Ivan_Krsti\u0107")
-        eq_(repr(c), "arg.contains(%s)" % repr(u'Ivan_Krsti\u0107'))
+        c = inspector.Contains("Ivan_Krsti\u0107")
+        eq_(repr(c), "arg.contains(%s)" % repr('Ivan_Krsti\u0107'))
 
 class TestMakeValueTest(unittest.TestCase):
 

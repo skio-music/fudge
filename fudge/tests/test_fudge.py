@@ -1,4 +1,3 @@
-from __future__ import with_statement
 import sys
 import unittest
 
@@ -905,7 +904,7 @@ class TestNextCall(unittest.TestCase):
             .provides("get_id").returns(1)\
             .provides("set_id")\
             .next_call(for_method="get_id").returns(2)
-        # print [c.return_val for c in db._declared_calls["get_id"]._calls]
+        # print([c.return_val for c in db._declared_calls["get_id"]._calls])
         eq_(db.get_id(), 1)
         eq_(db.set_id(), None)
         eq_(db.get_id(), 2)
